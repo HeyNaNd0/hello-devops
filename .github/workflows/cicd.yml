@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # set a lowercase image repo like: ghcr.io/heynand0/hello-devops
+      # set a lowercase image repo like: ghcr.io/owner/repo
       - name: Set lowercase image repo
         run: |
-          echo "IMAGE_REPO=ghcr.io/$(echo '${GITHUB_REPOSITORY}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+          echo "IMAGE_REPO=ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
         # $GITHUB_ENV exports variables to later steps
 
       - uses: actions/setup-go@v5
