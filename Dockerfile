@@ -1,5 +1,5 @@
 # Build stage
-FROM golang:1.22.4-alpine AS build
+FROM golang:1.25.1-alpine AS build
 WORKDIR /src
 RUN apk update && apk upgrade && apk add --no-cache ca-certificates
 COPY go.mod ./
