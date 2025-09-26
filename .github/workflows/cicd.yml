@@ -13,7 +13,7 @@ jobs:
       # set a lowercase image repo like: ghcr.io/heynand0/hello-devops
       - name: Set lowercase image repo
         run: |
-          echo "IMAGE_REPO=ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+          echo "IMAGE_REPO=ghcr.io/$(echo '${GITHUB_REPOSITORY}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
         # $GITHUB_ENV exports variables to later steps
 
       - uses: actions/setup-go@v5
@@ -35,4 +35,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_REPO }}:${{ github.sha }},${{ env.IMAGE_REPO }}:latest
+          tags: ghcr.io/${{ github.repository_owner }}/hello-devops:${{ github.sha }},ghcr.io/${{ github.repository_owner }}/hello-devops:latest
