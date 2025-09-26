@@ -1,5 +1,3 @@
-# create Dockerfile
-cat > Dockerfile << 'EOF'
 # Build stage
 FROM golang:1.22-alpine AS build
 WORKDIR /src
@@ -14,11 +12,3 @@ ENV PORT=8080
 EXPOSE 8080
 COPY --from=build /app/server /server
 ENTRYPOINT ["/server"]
-EOF
-
-# create .dockerignore
-cat > .dockerignore << 'EOF'
-.git
-.github
-**/*.md
-EOF
